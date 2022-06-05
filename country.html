@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Números de Covid por país</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.17/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/keen-dashboards.css"/>
+  </head>
+
+  <body class="keen-dashboard">
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-collapse">
+          <ul class="navbar-nav nav main-nav">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../country.html">By Country</a></li>
+            <li><a href="#">Top 5</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container grid grid-hero-sidebar">
+      <div class="sidebar">
+        <div class="chart-wrapper">
+          <div class="chart-title">Filters</div>
+          <div class="chart-stage">
+            <div>
+              <h3>Start Date</h3>
+              <input
+                style="font-size: 20px"
+                type="date"
+                name="date_start"
+                id="start-date"
+                min="2020-01-01"
+              />
+              <h3>End Date</h3>
+              <input
+                style="font-size: 20px"
+                type="date"
+                name="date_end"
+                id="end-date"
+                min="2020-01-01"
+              />
+              <h3>País</h3>
+              <select
+                style="font-size: 20px"
+                class="custom-select"
+                id="cmbCountry">
+              </select>
+              <h3>Data</h3>
+              <select
+                style="font-size: 20px"
+                class="custom-select"
+                id="cmbData">
+                <option value="confirmed">Confirmed Cases</option>
+                <option value="deaths" selected>Number of Deaths</option>
+                <option value="recovered">Recovered</option>
+              </select>
+              <div></div>
+              <div class="btn">
+                <button style="font-size: 20px" type="submit" id="btn-apply">
+                  Apply
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero">
+        <div class="chart-wrapper">
+          <div class="chart-stage">
+            <div>
+              <canvas id="daily-curve-graph" width="300" height="100"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <div class="chart-title">Total Confirmed</div>
+        <div class="chart-stage">
+          <section class="itemkpi">
+            <h5 id="kpiconfirmed"></h5>
+          </section>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <div class="chart-title">Total Deaths</div>
+        <div class="chart-stage">
+          <section class="itemkpi">
+            <h5 id="kpideaths"></h5>
+          </section>
+        </div>
+      </div>
+      <div class="chart-wrapper">
+        <div class="chart-title">Total Recovered</div>
+        <div class="chart-stage">
+          <section class="itemkpi">
+            <h5 id="kpirecovered"></h5>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Analytics -->
+    <script type="module" src="/assets/js/country.js"></script>
+  </body>
+</html>
